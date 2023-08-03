@@ -1,0 +1,13 @@
+{
+  "name": "SeoDevAudit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:krekosiewicz/SeoDevAudit.git",
+  "author": "kacperrekosiewicz <rekosiewicz.kacper@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "cd server && yarn run start:dev",
+    "client": "cd client && yarn dev",
+    "start": "yarn run server & yarn run client"
+  }
+}
