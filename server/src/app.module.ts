@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { ToolConfigModule } from 'src/logic/toolConfig/toolConfig.module';
 
 @Module({
-  imports: [ToolConfigModule, MongooseModule.forRoot(process.env.MONGODB_URI)],
+  imports: [MongooseModule.forRoot(process.env.MONGODB_URI), ToolConfigModule],
   controllers: [AppController],
   providers: [AppService],
 })

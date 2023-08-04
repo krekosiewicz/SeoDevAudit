@@ -6,7 +6,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Config', schema: ToolConfigSchema }]),
+    MongooseModule.forFeature([
+      { name: 'ToolConfig', schema: ToolConfigSchema },
+    ]),
   ],
   providers: [ToolConfigService],
   controllers: [ToolConfigController],

@@ -10,6 +10,7 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+      - ./mongo-seed:/docker-entrypoint-initdb.d
   server_app:
     build:
       context: ./server
@@ -33,3 +34,4 @@ services:
       - server_app
 volumes:
   mongo-data:
+    driver: local

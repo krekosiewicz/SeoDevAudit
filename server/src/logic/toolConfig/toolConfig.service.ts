@@ -9,7 +9,7 @@ import {
 @Injectable()
 export class ToolConfigService {
   constructor(
-    @InjectModel('Config')
+    @InjectModel('ToolConfig')
     private readonly configModel: Model<ToolConfigDocument>,
   ) {}
 
@@ -18,12 +18,6 @@ export class ToolConfigService {
     return createdConfig.save();
   }
 
-  getConfig() {
-    return [
-      { id: 1, title: 'Post Title', description: 'Post Description' },
-      { id: 2, title: 'Post Title2', description: 'Post Description2' },
-    ];
-  }
   async findAll(): Promise<ToolConfigType[]> {
     const configDocs = await this.configModel.find().exec();
     return configDocs.map((doc) => doc.toObject() as ToolConfigType);
