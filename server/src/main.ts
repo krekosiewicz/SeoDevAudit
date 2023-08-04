@@ -1,6 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
+import * as moduleAlias from 'module-alias';
+moduleAlias.addAlias('@schemas', __dirname + '/schemas');
+moduleAlias.addAlias('@logic', __dirname + '/logic');
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 

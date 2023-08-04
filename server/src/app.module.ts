@@ -2,10 +2,13 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ToolConfigModule } from 'src/logic/toolConfig/toolConfig.module';
+import { LighthouseConfigModule } from '@logic/lighthouseConfig/lighthouseConfig.module';
 
 @Module({
-  imports: [MongooseModule.forRoot(process.env.MONGODB_URI), ToolConfigModule],
+  imports: [
+    MongooseModule.forRoot(process.env.MONGODB_URI),
+    LighthouseConfigModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
