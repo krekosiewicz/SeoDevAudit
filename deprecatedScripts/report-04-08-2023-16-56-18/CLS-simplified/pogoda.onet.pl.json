@@ -1,0 +1,21 @@
+{
+  "id": "cumulative-layout-shift",
+  "title": "Cumulative Layout Shift",
+  "description": "Cumulative Layout Shift measures the movement of visible elements within the viewport. [Learn more about the Cumulative Layout Shift metric](https://web.dev/cls/).",
+  "score": 1,
+  "scoreDisplayMode": "numeric",
+  "numericValue": 0.0017332903397019764,
+  "numericUnit": "unitless",
+  "displayValue": "0.002",
+  "details": {
+    "type": "debugdata",
+    "items": [
+      {
+        "cumulativeLayoutShiftMainFrame": 0.0017332903397019764,
+        "totalCumulativeLayoutShift": 0.0017332903397019764
+      }
+    ]
+  },
+  "www_address": "pogoda.onet.pl",
+  "localIdDate": "04-08-2023-16-56-18"
+}

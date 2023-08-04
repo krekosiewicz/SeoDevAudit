@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      font-size: 18px;
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+    td:last-child {
+      font-weight: bold;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .multiline-cell {
+      white-space: pre-line;
+    }
+    .red {
+      background-color: #FF401F;
+    }
+    .orange {
+      background-color: #FFA500;
+    }
+    .green {
+      background-color: #018001;
+    }
+    .magenta {
+      background-color: #FF70FF;
+    }
+  </style>
+</head>
+<body>
+  <table id="data-table">
+    <tr>
+      <th class="sort-header" data-column="www_address">www_address</th>
+      <th class="sort-header" data-column="localIdDate">localIdDate</th>
+      <th class="sort-header" data-column="displayValue">displayValue</th>
+    </tr>
+  </table>
+
+  <script>
+    // Helper function to sort the table rows based on the selected column
+    function sortTable(columnIndex) {
+      const table = document.getElementById('data-table');
+      const rows = Array.from(table.rows).slice(1); // Exclude the header row
+      const isAscending = table.dataset.sortOrder === 'asc';
+
+      rows.sort((rowA, rowB) => {
+        const cellA = rowA.cells[columnIndex].textContent.toLowerCase();
+        const cellB = rowB.cells[columnIndex].textContent.toLowerCase();
+        return isAscending ? cellA.localeCompare(cellB) : cellB.localeCompare(cellA);
+      });
+
+      // Remove existing rows from the table
+      rows.forEach(row => table.removeChild(row));
+
+      // Re-append sorted rows to the table
+      rows.forEach(row => table.appendChild(row));
+
+      // Update sort order in the dataset attribute
+      table.dataset.sortOrder = isAscending ? 'desc' : 'asc';
+    }
+
+    // Function to handle click events on column headers
+    function handleHeaderClick(event) {
+      const column = event.target.dataset.column;
+      const columnIndex = Array.from(event.target.parentNode.cells).indexOf(event.target);
+      if (column) {
+        sortTable(columnIndex);
+      }
+    }
+
+    function checkTable(table) {
+      const lastElement = table[table.length - 1];
+      
+      if (lastElement === null || lastElement === 'null') {
+        return 'magenta';
+      }
+
+      //below block is optional and should be commented
+
+      const lastElementValue = parseFloat(lastElement);
+      if (lastElementValue < 0.1) {
+        return 'green';
+      } else if (lastElementValue < 0.25  && lastElementValue >= 0.1) {
+        return 'orange';
+      } else if (lastElementValue >= 0.25) { 
+        return 'red';
+      }
+
+
+      
+      for (let i = 0; i < table.length; i++) {
+        const element = parseFloat(table[i]);
+        
+        if (element >= 0.25) {
+          return 'red';
+        }
+        
+        if (element >= 0.1) {
+          return 'orange';
+        }
+      }
+      
+      return 'green';
+    }
+
+    // Attach click event listener to column headers
+    const headerCells = document.querySelectorAll('.sort-header');
+    headerCells.forEach(cell => cell.addEventListener('click', handleHeaderClick));
+
+    fetch('./report.csv')
+      .then(response => response.text())
+      .then(data => {
+        const rows = data.split('\n');
+        const table = document.getElementById('data-table');
+
+        // Create a map to store the combined rows by www_address
+        const combinedRows = new Map();
+
+        for (let i = 1; i < rows.length; i++) {
+          const cells = rows[i].split(',');
+          if (cells.length === 3) {
+            const wwwAddress = cells[0];
+            const localIdDate = cells[1];
+            const displayValue = cells[2];
+
+            // Check if the www_address already exists in the combinedRows map
+            if (combinedRows.has(wwwAddress)) {
+              // Append the new localIdDate and displayValue to the existing row
+              const existingRow = combinedRows.get(wwwAddress);
+              existingRow.localIdDates.push(localIdDate);
+              existingRow.displayValues.push(displayValue);
+            } else {
+              // Create a new combined row
+              const newRow = {
+                localIdDates: [localIdDate],
+                displayValues: [displayValue],
+              };
+              combinedRows.set(wwwAddress, newRow);
+            }
+          }
+        }
+
+        // Generate HTML table rows from the combinedRows map
+        combinedRows.forEach((combinedRow, wwwAddress) => {
+          const row = document.createElement('tr');
+          const addressCell = document.createElement('td');
+          const dateCell = document.createElement('td');
+          const valueCell = document.createElement('td');
+
+          addressCell.textContent = wwwAddress;
+
+          // Calculate the row height based on the number of localIdDates
+          row.style.height = `${combinedRow.localIdDates.length * 2}em`;
+
+          // Create a multiline cell for localIdDates
+          const localIdDatesContent = combinedRow.localIdDates.join('\n');
+          dateCell.textContent = localIdDatesContent;
+          dateCell.classList.add('multiline-cell');
+
+          // Create a multiline cell for displayValues
+          const displayValuesContent = combinedRow.displayValues.join('\n');
+          const color = checkTable(combinedRow.displayValues);
+          valueCell.textContent = displayValuesContent;
+          valueCell.classList.add('multiline-cell');
+          
+          row.classList.add(color);
+          row.appendChild(addressCell);
+          row.appendChild(dateCell);
+          row.appendChild(valueCell);
+
+          table.appendChild(row);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  </script>
+</body>
+</html>

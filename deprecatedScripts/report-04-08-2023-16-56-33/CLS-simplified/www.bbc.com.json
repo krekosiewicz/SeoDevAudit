@@ -1,0 +1,21 @@
+{
+  "id": "cumulative-layout-shift",
+  "title": "Cumulative Layout Shift",
+  "description": "Cumulative Layout Shift measures the movement of visible elements within the viewport. [Learn more about the Cumulative Layout Shift metric](https://web.dev/cls/).",
+  "score": 1,
+  "scoreDisplayMode": "numeric",
+  "numericValue": 0,
+  "numericUnit": "unitless",
+  "displayValue": "0",
+  "details": {
+    "type": "debugdata",
+    "items": [
+      {
+        "cumulativeLayoutShiftMainFrame": 0,
+        "totalCumulativeLayoutShift": 0
+      }
+    ]
+  },
+  "www_address": "www.bbc.com",
+  "localIdDate": "04-08-2023-16-56-33"
+}
