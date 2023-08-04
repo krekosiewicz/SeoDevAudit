@@ -103,8 +103,9 @@ The Beta version will feature a clickable demo accessible to everyone, hosted on
 ### Backend
 * nestjs with typescript, basic eslint
 * rxjs
+* mongodb
 
-## Definition of Done (DoD)
+## Definition of Done (DoD) (WIP)
 
 ### Setup
 
