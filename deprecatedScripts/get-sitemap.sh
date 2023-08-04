@@ -1,9 +1,9 @@
 #!/bin/bash
 
-url="https://beeyay.com/sitemap.xml"
+url="urlToDomainSupportSitemap.xml/sitemap.xml"
 output_sitemap="./config/sitemapProd.xml"
 output_urls="./config/allUrlsProd.txt"
-key="dGlja2V0ZXg6VGlja2V0ZXgyMDE4"
+#key="${key}"
 
 # Fetch the sitemap.xml file using curl with authorization header and store the result in a variable
 sitemap=$(curl "$url")
