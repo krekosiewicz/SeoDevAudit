@@ -19,7 +19,7 @@ services:
       - 3001:3001
     environment:
       - MONGODB_URI=mongodb://root:example@mongo:27017
-      - CORS_ORIGIN=http://localhost:3002
+      - CORS_ORIGIN=http://localhost:3002,http://localhost
     depends_on:
       - mongo
   next_app:
