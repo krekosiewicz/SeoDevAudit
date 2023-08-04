@@ -1,15 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ToolConfigController } from 'src/logic/toolConfig/toolConfig.controller';
+import { LighthouseConfigController } from 'src/logic/lighthouseConfig/lighthouseConfig.controller';
 
 describe('ConfigController', () => {
-  let controller: ToolConfigController;
+  let controller: LighthouseConfigController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ToolConfigController],
+      controllers: [LighthouseConfigController],
     }).compile();
 
-    controller = module.get<ToolConfigController>(ToolConfigController);
+    controller = module.get<LighthouseConfigController>(
+      LighthouseConfigController,
+    );
   });
 
   it('should be defined', () => {
