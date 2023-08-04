@@ -6,16 +6,11 @@ import {
   ToolConfigType,
 } from 'src/schemas/toolConfig.type';
 
-@Controller('config')
+@Controller('toolConfig')
 export class ToolConfigController {
   constructor(private readonly configService: ToolConfigService) {}
 
   @Get()
-  getConfig() {
-    return this.configService.getConfig();
-  }
-
-  @Get('findAll')
   async findAll(): Promise<ToolConfigType[]> {
     return this.configService.findAll();
   }
