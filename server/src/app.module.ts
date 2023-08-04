@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LighthouseConfigModule } from '@logic/lighthouseConfig/lighthouseConfig.module';
+import { LighthouseConfigModule } from '@logic/index';
 
 @Module({
   imports: [
