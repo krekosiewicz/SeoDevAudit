@@ -16,7 +16,9 @@ Those scripts/solutions are available in `./deprecatedScripts` and eventually wi
 
 The beta version of tool is under production, however, if you want to check main idea, you can jump to `./deprecatedScripts` and use it to produce reports for your website. The reports will be stored in the same directory. Depending on what settings you choose, you can output HTML or just JSON files and then run the Node.js server to see all results in a simple table.
 
-**Prerequisites: you need to have Lighthouse CLI installed**
+### **Prerequisites:**
+
+**you need to have Lighthouse CLI installed**
 
 **Prepare URLs for audit in a text file, as shown in `./deprecatedScripts/config/exampleUrls`**
 
@@ -24,7 +26,7 @@ The beta version of tool is under production, however, if you want to check main
 
 ```bash
 
-bash lighthouse-cli.sh ./deprecatedScripts/config/exampleUrls.txt
+bash lighthouse-cli.sh ./config/exampleUrls.txt
 
 ```
 
@@ -32,7 +34,7 @@ bash lighthouse-cli.sh ./deprecatedScripts/config/exampleUrls.txt
 
 ```bash
 
-bash lighthouse-cli.sh ./deprecatedScripts/config/exampleUrls.txt --html-output
+bash lighthouse-cli.sh ./config/exampleUrls.txt --html-output
 
 ```
 
