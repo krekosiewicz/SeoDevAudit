@@ -1,58 +1,27 @@
 import { Schema } from 'mongoose';
+import {
+  Audits,
+  Categories,
+  ChromeFlags,
+  OutputFormat,
+  Presets,
+  SkipAudits,
+} from 'src/schemas/lighthouseConfig/lighthouseConfig.constant';
 
 export const LighthouseConfigSchema = new Schema({
   url: { type: String, required: true },
   urlAuthKey: String,
-  outputFormat: {
-    type: [String],
-    enum: ['json', 'html', 'csv'],
-    default: ['json'],
-  },
   extraHeaders: String,
-  chromeFlags: {
-    type: [String],
-    enum: ['--headless', '--disable-gpu', '--no-sandbox'],
-    default: ['--headless'],
-  },
-  preset: {
-    type: String,
-    enum: ['desktop', 'mobile', null],
-    default: 'mobile',
-  },
-  onlyCategories: {
-    type: [String],
-    enum: [
-      'performance',
-      'accessibility',
-      'best-practices',
-      'seo',
-      'pwa',
-      null,
-    ],
-  },
+  outputFormat: { type: [String], enum: OutputFormat, default: ['json'] },
+  chromeFlags: { type: [String], enum: ChromeFlags, default: ['--headless'] },
+  preset: { type: String, enum: Presets, default: 'mobile' },
+  onlyCategories: { type: [String], enum: Categories },
   onlyAudits: {
     type: [String],
-    enum: [
-      'first-contentful-paint',
-      'speed-index',
-      'largest-contentful-paint',
-      'cumulative-layout-shift',
-      'total-blocking-time',
-      'interactive',
-      null,
-    ],
+    enum: Audits,
     default: ['cumulative-layout-shift'],
   },
-  skipAudits: {
-    type: [String],
-    enum: [
-      'uses-responsive-images',
-      'offscreen-images',
-      'unminified-css',
-      'unused-css-rules',
-      null,
-    ],
-  },
+  skipAudits: { type: [String], enum: SkipAudits },
   blockUrl: String,
   // ... add any other props you want you can check it with lighthouse-cli --help
 });
