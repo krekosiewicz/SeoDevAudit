@@ -9,11 +9,13 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  console.log(process.env.MONGODB_URI, 'dupa');
+  console.log('mongodb uri:', process.env.MONGODB_URI);
+  const corsOrigins = process.env.CORS_ORIGIN.split(',');
+  console.log('cors origin:', corsOrigins);
   const app = await NestFactory.create(AppModule);
   // Enable CORS for the origin from the .env file
   app.enableCors({
-    origin: process.env.CORS_ORIGIN,
+    origin: corsOrigins,
   });
   await app.listen(3001);
 }
