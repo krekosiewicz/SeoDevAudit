@@ -18,7 +18,7 @@ The beta version of tool is under production, however, if you want to check main
 
 ### **Prerequisites:**
 
-**you need to have Lighthouse CLI installed**
+**npm install -g lighthouse**
 
 **Prepare URLs for audit in a text file, as shown in `./deprecatedScripts/config/exampleUrls`**
 
