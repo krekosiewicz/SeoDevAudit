@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ConfigService } from './config.service';
+import { ToolConfigService } from 'src/logic/toolConfig/toolConfig.service';
 
 describe('ConfigService', () => {
-  let service: ConfigService;
+  let service: ToolConfigService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ConfigService],
+      providers: [ToolConfigService],
     }).compile();
 
-    service = module.get<ConfigService>(ConfigService);
+    service = module.get<ToolConfigService>(ToolConfigService);
   });
 
   it('should be defined', () => {
