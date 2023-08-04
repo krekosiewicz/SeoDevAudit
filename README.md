@@ -15,6 +15,23 @@ The tool is not ready yet, however if you want you can jump to ./deprecetedScrip
 Depend on what settings you will choose you can output html or just json files and then run nodejs.server to see all results in simple table
 
 
+**prerequisites: you need to have lighthouse CLI installed**
+
+**prepare urls for audit in txt file. as shown in ./deprecetedScripts/config/exampleUrls**
+
+**bash lighthouse-cli.sh ./config/exampleUrls.txt** <- to run cls-audit for mobile
+
+**or**
+
+**bash lighthouse-cli.sh ./config/exampleUrls.txt --html-output** <- to run all audits for desktop, it will also generate html so you can open it in browser
+
+**bash report-scraper.sh <report-dir-name-generated-by-previous-script>** <- it will simplifie/scrap cls audit from lighthouse audit
+![img.png](img.png)
+
+**node generateHistoricalReport.js <report-dir-name>/CLS-simplified/** <- it will create/update report.csv
+
+**node server.js** <- it will host simple html so you can sort/filter pages that are problematic. Thanks to know specic url, its much easier to identify SEO issue
+![img_1.png](img_1.png)
 
 
 
