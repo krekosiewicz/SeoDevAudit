@@ -2,75 +2,109 @@
 
 ## Description/Motivation
 
-This tool it's designed to produce SEO audits and store historical data. 
-Since Google Search Console does not support storing archival data and it's impossible to get report for specific URL (google search console combine all urls audits and makes averege score). 
+This tool is designed to produce SEO audits and store historical data. Since Google Search Console does not support storing archival data and it's impossible to get a report for a specific URL (Google Search Console combines all URLs audits and makes average scores), this tool can help you with that.
 
-In the project I'm currently working on, we started to notice significant drops in SEO rankings (mainly CLS)
-To at hook resolve the issue, i wrote couple of scripts (bash for scraping, js to reduce dataset, basic nodejs server to serve simple html so it's easier to detect what urls have issues)
+In the project I'm currently working on, we started to notice significant drops in SEO rankings (mainly CLS). To address the issue, I wrote a couple of scripts (bash for scraping, js to reduce the dataset, basic Node.js server to serve simple HTML so it's easier to detect what URLs have issues).
 
-Those scripts/solutions are available in ./deprecetedScripts and eventually will be refactored (then removed) to project youre currently looking at.
+Those scripts/solutions are available in `./deprecatedScripts` and eventually will be refactored (then removed) to the project you're currently looking at.
 
 ## Project status, how to use it
-The tool is not ready yet, however if you want you can jump to ./deprecetedScripts and use it to produce reports for your website, reports will be stored in the same directory. 
-Depend on what settings you will choose you can output html or just json files and then run nodejs.server to see all results in simple table
 
+The tool is not ready yet, however, if you want, you can jump to `./deprecatedScripts` and use it to produce reports for your website. The reports will be stored in the same directory. Depending on what settings you choose, you can output HTML or just JSON files and then run the Node.js server to see all results in a simple table.
 
-**prerequisites: you need to have lighthouse CLI installed**
+**Prerequisites: you need to have Lighthouse CLI installed**
 
-**prepare urls for audit in txt file. as shown in ./deprecetedScripts/config/exampleUrls**
+**Prepare URLs for audit in a text file, as shown in `./deprecatedScripts/config/exampleUrls`**
 
-**bash lighthouse-cli.sh ./config/exampleUrls.txt** <- to run cls-audit for mobile
+**Run CLS-audit for mobile:**
 
-**or**
+```bash
 
-**bash lighthouse-cli.sh ./config/exampleUrls.txt --html-output** <- to run all audits for desktop, it will also generate html so you can open it in browser
+bash lighthouse-cli.sh ./deprecatedScripts/config/exampleUrls.txt
 
-**bash report-scraper.sh <report-dir-name-generated-by-previous-script>** <- it will simplifie/scrap cls audit from lighthouse audit
+```
+
+**Or run all audits for desktop (also generates HTML):**
+
+```bash
+
+bash lighthouse-cli.sh ./deprecatedScripts/config/exampleUrls.txt --html-output
+
+```
+
+**Simplify/scrap CLS audit from Lighthouse audit:**
+
+```bash
+
+bash report-scraper.sh <report-dir-name-generated-by-previous-script>
+
+```
+
 ![img.png](img.png)
 
-**node generateHistoricalReport.js <report-dir-name>/CLS-simplified/** <- it will create/update report.csv
+**Create/update report.csv:**
 
-**node server.js** <- it will host simple html so you can sort/filter pages that are problematic. Thanks to know specic url, its much easier to identify SEO issue
+```bash
+
+node generateHistoricalReport.js <report-dir-name>/CLS-simplified/
+
+```
+
+**Host simple HTML so you can sort/filter pages that are problematic:**
+
+```bash
+
+node server.js
+
+```
+
 ![img_1.png](img_1.png)
 
+## What will be included in the Beta version
 
+_(Add details about what features or improvements are planned for the Beta version)_
 
-## What will be included in Beta version
-
-
-
-##  Definition of Done (DoD)
+## Definition of Done (DoD)
 
 ### DevOps
 
 - [ ] Placeholder 1
+
 - [ ] Placeholder 2
+
 - [ ] Placeholder 3
 
 ### Continuous Integration (CI)
 
 - [ ] Placeholder 1
+
 - [ ] Placeholder 2
+
 - [ ] Placeholder 3
 
 ### Server
 
 - [ ] Placeholder 1
+
 - [ ] Placeholder 2
+
 - [ ] Placeholder 3
 
 ### Client
 
 - [ ] Placeholder 1
+
 - [ ] Placeholder 2
+
 - [ ] Placeholder 3
 
 ### Instruction/Readme
 
 - [ ] Placeholder 1
-- [ ] Placeholder 2
-- [ ] Placeholder 3
 
+- [ ] Placeholder 2
+
+- [ ] Placeholder 3
 
 ## Future Plans
 
