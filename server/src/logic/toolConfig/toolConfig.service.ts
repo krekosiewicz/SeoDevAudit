@@ -13,6 +13,11 @@ export class ToolConfigService {
     private readonly configModel: Model<ToolConfigDocument>,
   ) {}
 
+  async create(createConfigDto: ToolConfigType): Promise<ToolConfigDocument> {
+    const createdConfig = new this.configModel(createConfigDto);
+    return createdConfig.save();
+  }
+
   getConfig() {
     return [
       { id: 1, title: 'Post Title', description: 'Post Description' },

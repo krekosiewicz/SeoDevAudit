@@ -5,10 +5,7 @@ import { AppService } from './app.service';
 import { ToolConfigModule } from 'src/logic/toolConfig/toolConfig.module';
 
 @Module({
-  imports: [
-    ToolConfigModule,
-    MongooseModule.forRoot('mongodb://localhost/nest'),
-  ],
+  imports: [ToolConfigModule, MongooseModule.forRoot(process.env.MONGODB_URI)],
   controllers: [AppController],
   providers: [AppService],
 })
