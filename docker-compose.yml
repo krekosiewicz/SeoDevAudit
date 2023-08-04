@@ -1,28 +1,35 @@
 version: '3.8'
-
 services:
-  nest_app:
-    build: ./server
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+  server_app:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     ports:
       - 3001:3001
-    depends_on:
-      - mongodb
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/myDatabase
-
+      - MONGODB_URI=mongodb://root:example@mongo:27017
+      - CORS_ORIGIN=http://localhost:3002
+    depends_on:
+      - mongo
   next_app:
-    build: ./client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
     ports:
       - 3002:3002
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:3001
-
-  mongodb:
-    image: mongo
-    ports:
-      - 27017:27017
-    volumes:
-      - mongodb_data:/data/db
-
+    depends_on:
+      - server_app
 volumes:
-  mongodb_data:
+  mongo-data:
