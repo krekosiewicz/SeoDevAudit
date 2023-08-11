@@ -6,7 +6,7 @@ import {
   OutputFormat,
   Presets,
   SkipAudits,
-} from 'src/schemas/lighthouseConfig/lighthouseConfig.constant';
+} from '../../../../shared/lighthouseConfig.constant';
 
 export const LighthouseConfigSchema = new Schema({
   url: { type: String, required: true },

@@ -1,0 +1,1 @@
+{"version":3,"file":"lighthouseConfig.default.js","sourceRoot":"","sources":["lighthouseConfig.default.ts"],"names":[],"mappings":";;;AAEa,QAAA,uBAAuB,GAAyB;IAC3D,GAAG,EAAE,EAAE;IACP,YAAY,EAAE,CAAC,MAAM,CAAC;IACtB,WAAW,EAAE,CAAC,YAAY,CAAC;IAC3B,MAAM,EAAE,QAAQ;IAChB,UAAU,EAAE,CAAC,yBAAyB,CAAC;CACxC,CAAC"}
